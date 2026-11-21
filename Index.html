@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DECASTROSPORTS</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <header>
+        <nav>
+            <a href="Index.html" class="titulo">DECASTRO<span class="sports">SPORTS</span></a>
+
+            <div class="navbar-menu">
+                <ul class="funciones">
+                    <li><a href="Index.html">HOME</a></li>
+                    <li><a href="Utilidades.html">UTILIDADES</a></li>
+                    <li><a href="contacto.html">CONTACTO</a></li>
+                </ul>
+
+                <time class="mini-calendario" datetime="">
+                    <span class="cal-anio">AAAA</span>
+                    <span class="cal-dia">--</span>
+                    <span class="cal-mes">MES</span>
+                </time>
+            </div>
+        </nav>
+    </header>
+
+    <main>
+        <aside class="eventos">
+            <h3>Próximos eventos</h3>
+            <ul>
+                <li><a href="https://search.brave.com/search?q=Liga+local+--+Jornada+12">Liga local -- Jornada 12</a></li>
+                <li><a href="https://search.brave.com/search?q=Torneo+benjam%C3%ADn-alev%C3%ADn">Torneo benjamín-alevín</a></li>
+                <li><a href="https://search.brave.com/search?q=Entrenamiento+abierto">Entrenamiento abierto</a></li>
+                <li><a href="https://search.brave.com/search?q=Asamblea+de+socios">Asamblea de socios</a></li>
+            </ul>
+        </aside>
+
+        <div class="central">
+            <h2>Bienvenidos a DeCastro SPORTS</h2>
+            <p>
+                Somos una asociación deportiva dedicada a fomentar el deporte base en todas sus categorías,
+                desde los más pequeños hasta el equipo sénior. Consulta nuestras herramientas y horarios en la sección Utilidades.
+            </p>
+            <p>
+                Esta página se completará más adelante con JavaScript: el pequeño calendario de la cabecera mostrará la fecha actual,
+                    y al cargar la página aparecerá una ventana de bienvenida.
+            </p>
+        </div>
+        
+
+        <aside class="accesos">
+            <h3>Accesos rápidos</h3>
+            <ul class="accesos2"> <!--Se enlaza el href a otra pagina con el nombre del archivo y el # es para buscar el id y acceder automatico.-->
+                <li><a href="Utilidades.html#imc">Calculadora de IMC</a></li>
+                <li><a href="Utilidades.html#fcm">Calculadora de FCM</a></li>
+                <li><a href="Utilidades.html#categoria">Categoría por edad</a></li>
+                <li><a href="Utilidades.html#horario">Horario de la asociación</a></li>
+            </ul>
+        </aside>
+    </main>
+
+    <footer>
+        <h4>Asociación Deportiva DeCastro SPORTS</h4>
+        <p>Web desarrollada por: Nombre Apellido1 Apellido2</p>
+        <p><a href="aviso-legal.html" class="aviso">Aviso legal</a> -- se abrirá en una ventana sin barras de scroll ni de menú</p>    </footer>
+        <script src="Index.js"></script><!--  Con el script llamo a la función del calendario y lo que se necesite de alli.   -->
+</body>
+</html>
