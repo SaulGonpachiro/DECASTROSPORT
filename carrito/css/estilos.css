@@ -1,0 +1,98 @@
+/**
+ * css/estilos.css — Estilos de la mini-tienda DeCastro Sports.
+ *
+ * Organización (de lo general a lo particular):
+ *   1. Variables (paleta con nombre)   4. Producto y líneas del carrito
+ *   2. Base (reset y tipografía)       5. Botones
+ *   3. Maquetación (rejilla)           6. Carrito, estado y detalles
+ */
+
+/* ---- 1. Variables --------------------------------------------- */
+/* Paleta pequeña y con nombre: tinta (texto), cesped (acción), linea (bordes). */
+:root {
+  --tinta: #16233a;
+  --tinta-suave: #55627a;
+  --cesped: #17784a;
+  --cesped-oscuro: #0f5a37;
+  --linea: #d6dce5;
+  --superficie: #f4f6f9;
+  --alerta: #b42318;
+  color-scheme: light;
+}
+
+/* ---- 2. Base (reset y tipografía) -------------------------------- */
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  font: 16px/1.5 "Segoe UI", system-ui, -apple-system, sans-serif;
+  color: var(--tinta);
+  background: #fff;
+}
+
+header, main { max-width: 62rem; margin: 0 auto; padding: 1.25rem; }
+header { border-bottom: 3px solid var(--cesped); }
+h1 { margin: 0; font-size: 1.6rem; letter-spacing: -0.01em; }
+header p { margin: 0.25rem 0 0; color: var(--tinta-suave); }
+h2 { margin: 0 0 0.75rem; font-size: 1.15rem; }
+
+/* ---- 3. Maquetación ---------------------------------------------- */
+/* Dos columnas en pantallas anchas; una sola en móvil. */
+.rejilla { display: grid; gap: 1.5rem; grid-template-columns: 1fr; }
+@media (min-width: 52rem) { .rejilla { grid-template-columns: 3fr 2fr; } }
+
+/* ---- 4. Producto y líneas del carrito ---------------------------- */
+ul { list-style: none; margin: 0; padding: 0; }
+
+.producto, .linea {
+  display: flex; align-items: center; justify-content: space-between; gap: 0.75rem;
+  padding: 0.75rem 0; border-bottom: 1px solid var(--linea);
+}
+.producto p { margin: 0; }
+.producto__nombre { font-weight: 600; }
+.producto__stock { font-size: 0.875rem; color: var(--tinta-suave); }
+.producto__stock--agotado { color: var(--alerta); font-weight: 600; }
+.linea span:first-child { flex: 1; }
+.linea__importe { font-variant-numeric: tabular-nums; }
+.vacio { color: var(--tinta-suave); padding: 0.75rem 0; }
+
+/* ---- 5. Botones -------------------------------------------------- */
+button {
+  font: inherit; font-weight: 600; cursor: pointer;
+  padding: 0.45rem 0.9rem; border-radius: 6px; border: 1px solid var(--cesped);
+  background: var(--cesped); color: #fff; white-space: nowrap;
+}
+button:hover:not(:disabled) { background: var(--cesped-oscuro); }
+button:focus-visible { outline: 3px solid var(--tinta); outline-offset: 2px; }
+button:disabled { opacity: 0.45; cursor: not-allowed; }
+.boton-secundario { background: #fff; color: var(--tinta); border-color: var(--linea); }
+.boton-secundario:hover:not(:disabled) { background: var(--superficie); }
+
+/* ---- 6. Carrito, estado y detalles ------------------------------- */
+.carrito { background: var(--superficie); border-radius: 10px; padding: 1.1rem; align-self: start; }
+#total { margin: 1rem 0; font-size: 1.6rem; font-weight: 700; font-variant-numeric: tabular-nums; }
+.acciones { display: flex; gap: 0.5rem; flex-wrap: wrap; }
+
+.estado { min-height: 1.5rem; margin: 1rem 0 0; color: var(--cesped-oscuro); font-weight: 600; }
+.estado--error { color: var(--alerta); }
+
+details { margin-top: 1.5rem; color: var(--tinta-suave); }
+summary { cursor: pointer; font-weight: 600; color: var(--tinta); }
+details li { padding: 0.3rem 0; font-size: 0.875rem; }
+
+/* ---- 7. Dentro de la web de DECASTRO ----------------------------- */
+/* el header tiene que verse igual que en las otras paginas */
+header {
+  max-width: none;
+  margin: 0 0 40px;
+  padding: 0;
+  border-bottom-color: var(--navy);
+  font: initial;
+}
+
+header ul { margin: 1em 0; padding-left: 40px; }
+
+footer { font: initial; }
+
+/* el main de style.css va en flex para los aside, aqui no hay */
+main.tienda { display: block; margin-bottom: 40px; }

@@ -1,0 +1,10 @@
+{
+  "name": "ejercicio-t3s2-minitienda",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "description": "T3 S2 · Ejercicio guiado de POO en JavaScript · Mini-tienda DeCastro Sports",
+  "scripts": {
+    "test": "node --test pruebas.js"
+  }
+}

@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>DECASTROSPORTS</title>
+
+  <!-- primero el css de la web y luego el de la tienda -->
+  <link rel="stylesheet" href="../style.css">
+  <link rel="stylesheet" href="css/estilos.css">
+</head>
+
+<body>
+  <!-- mismo header que el resto de paginas, con ../ porque estamos dentro de carrito -->
+  <header>
+    <nav>
+      <a href="../Index.html" class="titulo">DECASTRO<span class="sports">SPORTS</span></a>
+
+      <div class="navbar-menu">
+        <ul class="funciones">
+          <li><a href="../Index.html">HOME</a></li>
+          <li><a href="../Utilidades.html">UTILIDADES</a></li>
+          <li><a href="../contacto.html">CONTACTO</a></li>
+          <li><a href="index.html">CARRITO</a></li>
+        </ul>
+
+        <time class="mini-calendario" datetime="">
+          <span class="cal-anio">AAAA</span>
+          <span class="cal-dia">--</span>
+          <span class="cal-mes">MES</span>
+        </time>
+      </div>
+    </nav>
+  </header>
+
+  <main class="tienda">
+    <h2>Carrito</h2>
+    <p>Mini-tienda del ejercicio guiado · Tema 3, sesión 2. Abrid la consola del navegador para ver la demostración.</p>
+
+    <div class="rejilla">
+      <section aria-labelledby="titulo-catalogo">
+        <h2 id="titulo-catalogo">Catálogo</h2>
+        <!-- Se rellena desde app.js con el modelo -->
+        <ul id="catalogo"></ul>
+
+        <details>
+          <summary>Registros de la API rechazados (<span id="num-rechazados">0</span>)</summary>
+          <ul id="rechazados"></ul>
+        </details>
+      </section>
+
+      <section class="carrito" aria-labelledby="titulo-carrito">
+        <h2 id="titulo-carrito">Tu carrito</h2>
+        <ul id="lineas-carrito"></ul>
+        <p id="total">Total: 0,00 €</p>
+        <div class="acciones">
+          <button id="confirmar" type="button">Confirmar compra</button>
+          <button id="vaciar" type="button" class="boton-secundario">Vaciar carrito</button>
+        </div>
+      </section>
+    </div>
+
+    <!-- role="status": los lectores de pantalla anuncian los cambios de este texto -->
+    <p id="estado" class="estado" role="status"></p>
+  </main>
+
+  <footer>
+    <h4>Asociación Deportiva DeCastro SPORTS</h4>
+    <p>Web desarrollada por: Nombre Apellido1 Apellido2</p>
+    <p><a href="../aviso-legal.html" class="aviso">Aviso legal</a> -- se abrirá en una ventana sin barras de scroll ni de menú</p>
+  </footer>
+
+  <!-- el Index.js de siempre para el calendario -->
+  <script src="../Index.js"></script>
+  <!-- type="module": habilita import/export y se carga diferido (el DOM ya existe) -->
+  <script type="module" src="main.js"></script>
+</body>
+</html>
