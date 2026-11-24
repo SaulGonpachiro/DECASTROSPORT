@@ -139,13 +139,30 @@ export class ProductoRebajado extends Producto {
 export class Carrito {
   #lineas = [];
   #buscarLinea(sku) {
+    // TODO 4A: find sobre #lineas, comparando producto.sku.
     return this.#lineas.find((linea) => linea.producto.sku === sku);
   }
   agregar(producto, cantidad = 1) {
+    // TODO 4B: validar instanceof Producto y cantidad positiva.
 if (!(producto instanceof Producto)) {
       throw new ErrorValidacion("producto", `«producto» debe ser un Producto del catálogo.`);
     }    
+    exigirEnteroPositivo("cantidad", cantidad);
     // TODO 4C: sumar cantidad existente, comprobar stock TOTAL, actualizar o push.
+    const linea = this.#buscarLinea(producto.sku);
+    const yaEnCarrito = linea ? linea.cantidad : 0;
+    const totalPedido = yaEnCarrito + cantidad;
+
+    if (!producto.hayStock(totalPedido)) {
+      throw new ErrorValidacion("stock", `«stock» insuficiente: quedan ${producto.stock} uds.`);
+    }
+
+    if (linea) {
+      linea.cantidad = totalPedido;
+    } else {
+      this.#lineas.push({ producto, cantidad });
+    }
+  
   }
   quitar(sku) {
     // TODO 4D: findIndex y splice; si no existe, ErrorValidacion('sku', mensaje).
