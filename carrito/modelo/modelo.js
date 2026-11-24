@@ -139,7 +139,7 @@ export class ProductoRebajado extends Producto {
 export class Carrito {
   #lineas = [];
   #buscarLinea(sku) {
-    // TODO 4A: find sobre #lineas, comparando producto.sku.
+    return this.#lineas.find((linea) => linea.producto.sku === sku);
   }
   agregar(producto, cantidad = 1) {
     // TODO 4B: validar instanceof Producto y cantidad positiva.
