@@ -166,9 +166,15 @@ if (!(producto instanceof Producto)) {
   }
   quitar(sku) {
     // TODO 4D: findIndex y splice; si no existe, ErrorValidacion('sku', mensaje).
+    const posicion = this.#lineas.findIndex((linea) => linea.producto.sku === sku);
+    if (posicion === -1) {
+      throw new ErrorValidacion("sku", `«sku» ${sku} no está en el carrito.`);
+    }
+    this.#lineas.splice(posicion, 1);
   }
   vaciar() {
     // TODO 4E: dejar #lineas vacío.
+    this.#lineas = [];
   }
   get lineas() {
     // TODO 4F: copia del array Y de cada registro {producto, cantidad}.
