@@ -199,8 +199,20 @@ if (!(producto instanceof Producto)) {
       return texto.join("\n");
   }  
   confirmarCompra() {
-    // TODO 4J: si vacío, error; PASADA 1 comprobar todas las líneas.
+// TODO 4J: si vacío, error; PASADA 1 comprobar todas las líneas.
+    if (this.#lineas.length === 0) {
+      throw new ErrorValidacion("carrito", `«carrito» está vacío, no hay nada que comprar.`);
+    }
+    this.#lineas.forEach((linea) => {
+      if (!linea.producto.hayStock(linea.cantidad)) {
+        throw new ErrorValidacion("stock", `«stock» insuficiente de ${linea.producto.nombre}: quedan ${linea.producto.stock} uds.`);
+      }
+    });
     // TODO 4K: guardar {unidades,total}; PASADA 2 retirar; vaciar y devolver resumen.
+    const resumen = { unidades: this.unidades, total: this.total };
+    this.#lineas.forEach((linea) => linea.producto.retirar(linea.cantidad));
+    this.vaciar();
+    return resumen;
   }
 }
 
