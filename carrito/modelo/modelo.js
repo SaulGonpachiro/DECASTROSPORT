@@ -182,11 +182,12 @@ if (!(producto instanceof Producto)) {
   }
   get unidades() {
     // TODO 4G: reduce sumando cantidades.
-    return 0;
+    return this.#lineas.reduce((suma, linea) => suma + linea.cantidad, 0);
   }
   get total() {
     // TODO 4H: reduce con producto.precioConIVA() * cantidad y redondear.
-    return 0;
+    const total = this.#lineas.reduce((suma, linea) => suma + linea.producto.precioConIVA() * linea.cantidad, 0);
+    return redondear(total);  
   }
   resumen() {
     // TODO 4I: si vacío '(carrito vacío)'; si no, líneas y TOTAL.
