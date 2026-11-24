@@ -178,7 +178,7 @@ if (!(producto instanceof Producto)) {
   }
   get lineas() {
     // TODO 4F: copia del array Y de cada registro {producto, cantidad}.
-    return [];
+    return this.#lineas.map((linea) => ({ ...linea }));
   }
   get unidades() {
     // TODO 4G: reduce sumando cantidades.
