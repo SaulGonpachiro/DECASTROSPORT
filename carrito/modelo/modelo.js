@@ -241,7 +241,22 @@ export function construirCatalogo(registrosApi) {
   const rechazados = [];
   const skusVistos = new Set();
   // TODO 5D: recorrer con forEach((registro, indice) => {...}).
+    registrosApi.forEach((registro, indice) => {
   // TODO 5E: try/catch DENTRO; crearProducto, detectar duplicados, guardar válido.
+  try {
+      const producto = crearProducto(registro);
+      if (skusVistos.has(producto.sku)) {
+        throw new ErrorValidacion("sku", `«sku» ${producto.sku} duplicado.`);
+      }
+      skusVistos.add(producto.sku);
+      validos.push(producto);
+    } catch (error) {
   // TODO 5F: si ErrorValidacion, push {indice, sku, motivo}; si otro error, throw error.
+  if (!(error instanceof ErrorValidacion)) {
+        throw error;
+      }
+      rechazados.push({ indice, sku: registro?.sku ?? "(sin sku)", motivo: error.message });
+    }
+  });
   return { validos, rechazados };
 }
