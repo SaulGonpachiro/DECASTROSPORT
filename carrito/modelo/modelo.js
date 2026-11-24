@@ -142,7 +142,9 @@ export class Carrito {
     return this.#lineas.find((linea) => linea.producto.sku === sku);
   }
   agregar(producto, cantidad = 1) {
-    // TODO 4B: validar instanceof Producto y cantidad positiva.
+if (!(producto instanceof Producto)) {
+      throw new ErrorValidacion("producto", `«producto» debe ser un Producto del catálogo.`);
+    }    
     // TODO 4C: sumar cantidad existente, comprobar stock TOTAL, actualizar o push.
   }
   quitar(sku) {
