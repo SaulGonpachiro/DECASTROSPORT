@@ -218,9 +218,23 @@ if (!(producto instanceof Producto)) {
 
 // PASO 5 · Datos API
 export function crearProducto(registroApi) {
-  // TODO 5A: validar que sea objeto no null.
-  // TODO 5B: mapear name->nombre, price->precio, discount->descuento.
-  // TODO 5C: devolver Producto o ProductoRebajado según exista discount.
+// TODO 5A: validar que sea objeto no null.
+    if (typeof registroApi !== "object" || registroApi === null) {
+      throw new ErrorValidacion("registro", `«registro» debe ser un objeto.`);
+    }
+    // TODO 5B: mapear name->nombre, price->precio, discount->descuento.
+    const datos = {
+      sku: registroApi.sku,
+      nombre: registroApi.name,
+      precio: registroApi.price,
+      stock: registroApi.stock,
+      descuento: registroApi.discount,
+    };
+    // TODO 5C: devolver Producto o ProductoRebajado según exista discount.
+    if (registroApi.discount === undefined) {
+      return new Producto(datos);
+    }
+    return new ProductoRebajado(datos);
 }
 export function construirCatalogo(registrosApi) {
   const validos = [];
