@@ -191,8 +191,13 @@ if (!(producto instanceof Producto)) {
   }
   resumen() {
     // TODO 4I: si vacío '(carrito vacío)'; si no, líneas y TOTAL.
-    return '(carrito vacío)';
-  }
+    if (this.#lineas.length === 0) {
+      return "(carrito vacío)";
+    }
+      const texto = this.#lineas.map((linea) => `${linea.cantidad} × ${linea.producto.resumen()}`);
+      texto.push(`TOTAL: ${formatearMoneda(this.total)}`);
+      return texto.join("\n");
+  }  
   confirmarCompra() {
     // TODO 4J: si vacío, error; PASADA 1 comprobar todas las líneas.
     // TODO 4K: guardar {unidades,total}; PASADA 2 retirar; vaciar y devolver resumen.
