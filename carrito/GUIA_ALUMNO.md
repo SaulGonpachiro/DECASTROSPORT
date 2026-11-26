@@ -67,3 +67,22 @@ Completar **solo `modelo/modelo.js`** para que las pruebas del modelo pasen. La 
 
 ## Ampliación para casa
 Experimenta con `demo.js`, `this` y callbacks; explica `toJSON`; añade una prueba nueva. **No es obligatorio para completar los 90 minutos.**
+
+
+## Respuestas del PDF
+
+Resultado de pruebas: 23 / 23
+Lo que más entiendo: lo de validar antes de cambiar nada y lo de comprobar todo el carrito antes de quitar el stock.
+Mi duda: 
+
+1. ¿Por qué Carrito no hereda de Producto?
+
+   Porque el carrito no es un producto, no tiene sku ni precio ni stock, lo que tiene son productos dentro con su cantidad. Si heredara tendria cosas que no le sirven para nada.
+
+2. ¿Por qué se valida antes de modificar?
+
+   Porque si primero cambias el valor y luego compruebas, cuando el dato esta mal ya lo has estropeado. Validando antes, si salta el error el objeto se queda como estaba, por ejemplo si pones precio -5 se queda el precio de antes.
+
+3. ¿Por qué try/catch va dentro del bucle?
+
+   Porque asi si un registro viene mal se apunta en rechazados y el bucle sigue con los siguientes. Si estuviera fuera, al primer error se pararia todo y no se procesaria el resto del catalogo.
