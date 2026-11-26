@@ -46,16 +46,24 @@ Completar **solo `modelo/modelo.js`** para que las pruebas del modelo pasen. La 
 ## Registro de progreso
 | Momento | Pruebas superadas | Error que resolví |
 |---|---|---|
-| Inicio | | |
+| Inicio | 0 | |
 | Tras Producto | | |
-| Tras herencia | | |
-| Tras Carrito | | |
-| Final | | |
+| Tras herencia | 13 | |
+| Tras Carrito | 20 | En agregar comprobaba el stock solo con la cantidad nueva, y hay que sumarle lo que ya había en el carrito |
+| Final | 23 | En construirCatalogo el try/catch tiene que ir dentro del forEach, y relanzar los errores que no son ErrorValidacion |
 
 ## Cierre (responde en 2–3 líneas)
 1. ¿Por qué un Carrito *tiene* productos pero no *es* un producto?
+
+   Porque el carrito no es un producto, no tiene sku ni precio ni stock, lo que tiene son productos dentro con su cantidad. Por eso no hace extends de Producto, sino que guarda un array con las lineas.
+
 2. ¿Por qué validar stock en `agregar` no basta para `confirmarCompra`?
+
+   Porque desde que lo metes en el carrito hasta que compras el stock puede cambiar, entonces en confirmarCompra hay que volver a mirarlo. Primero se comprueban todas las lineas y si alguna falla no se compra nada, y si van todas bien ya se quita el stock.
+
 3. ¿Por qué un error de datos se registra, pero un bug debe propagarse?
+
+   Porque si un dato de la API viene mal se apunta en rechazados y se sigue con los siguientes, ya que no es culpa del codigo. Pero si es un bug como un TypeError hay que relanzarlo con throw, ya que si lo escondes no te enteras del fallo.
 
 ## Ampliación para casa
 Experimenta con `demo.js`, `this` y callbacks; explica `toJSON`; añade una prueba nueva. **No es obligatorio para completar los 90 minutos.**
